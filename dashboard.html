@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard · ImiraZSite</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="app">
+
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+  <a class="brand" href="index.html"><span class="mark" data-icon="spark" data-size="17"></span><b>Imira<span>Z</span>Site</b></a>
+  <nav class="side-nav">
+    <a href="#" class="active" data-section="dashboard"><span data-icon="home"></span>Dashboard</a>
+    <a href="#" data-section="files"><span data-icon="folder"></span>My files</a>
+    <a href="#" data-section="recent"><span data-icon="clock"></span>Recent</a>
+    <a href="#" data-section="starred"><span data-icon="star"></span>Starred</a>
+    <a href="#" data-section="trash"><span data-icon="trash"></span>Trash</a>
+  </nav>
+  <div class="divider"></div>
+  <a href="#" class="glass storage-widget" data-section="storage">
+    <b data-storage-used>72 GB / 100 GB</b>
+    <div class="bar"><i data-storage-bar style="width:72%"></i></div>
+    <span class="muted" style="font-size:12.5px" data-free>28 GB available</span>
+  </a>
+  <nav class="side-nav">
+    <a href="#" data-section="settings"><span data-icon="settings"></span>Settings</a>
+    <a href="#" data-section="account"><span data-icon="user"></span>Account</a>
+  </nav>
+  <div class="user-box">
+    <button class="user-btn" data-drop="userDrop" aria-haspopup="menu">
+      <span class="avatar">EZ</span>
+      <span style="flex:1"><b style="font-size:13.5px">Ezio</b><small><span class="dot"></span>Online</small></span>
+      <span data-icon="chevron" data-size="15"></span>
+    </button>
+    <div class="menu dropdown open" id="userDrop" role="menu" hidden>
+      <button data-section="account"><span data-icon="user" data-size="16"></span>Profile</button>
+      <button data-section="settings"><span data-icon="settings" data-size="16"></span>Settings</button>
+      <button data-pending="Help"><span data-icon="info" data-size="16"></span>Help</button>
+      <hr>
+      <button class="danger" data-logout><span data-icon="logout" data-size="16"></span>Sign out</button>
+    </div>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<div>
+  <header class="topbar">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open navigation" data-icon="menu"></button>
+    <div class="search">
+      <span data-icon="search" data-size="17"></span>
+      <label class="sr-only" for="search">Search files and folders</label>
+      <input class="input" id="search" type="search" placeholder="Search files and folders...">
+    </div>
+    <span class="spacer"></span>
+    <button class="icon-btn" data-pending="Notifications" aria-label="Notifications" data-icon="bell"></button>
+    <div style="position:relative">
+      <button class="top-user" data-drop="topDrop" aria-haspopup="menu">
+        <span class="avatar" style="width:28px;height:28px;font-size:11px">EZ</span>
+        <span>Ezio</span><span data-icon="chevron" data-size="15"></span>
+      </button>
+      <div class="menu dropdown below open" id="topDrop" role="menu" hidden>
+        <button data-section="account"><span data-icon="user" data-size="16"></span>Profile</button>
+        <button data-section="settings"><span data-icon="settings" data-size="16"></span>Settings</button>
+        <hr>
+        <button class="danger" data-logout><span data-icon="logout" data-size="16"></span>Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Dashboard -->
+    <section class="view active" id="view-dashboard">
+      <div class="page-head">
+        <div><h1 id="greeting">Good morning 👋</h1><p>Your files at a glance.</p></div>
+        <button class="btn btn-primary" data-open="uploadModal"><span data-icon="upload" data-size="17"></span>Upload files</button>
+      </div>
+
+      <div class="stats">
+        <article class="glass stat"><div class="top">Storage<span class="mark" data-icon="spark" data-size="17"></span></div>
+          <strong data-storage-used>72 GB / 100 GB</strong>
+          <div class="bar"><i data-storage-bar style="width:72%"></i></div>
+          <span class="muted" style="font-size:13px"><span data-storage-pct>72%</span> used</span></article>
+        <article class="glass stat"><div class="top">Files<span class="mark blue" data-icon="file" data-size="17"></span></div>
+          <strong id="statFiles">1,248 files</strong><span class="muted" style="font-size:13px">Across every folder</span></article>
+        <article class="glass stat"><div class="top">Folders<span class="mark violet" data-icon="folder" data-size="17"></span></div>
+          <strong>86 folders</strong><span class="muted" style="font-size:13px">5 at the top level</span></article>
+        <article class="glass stat"><div class="top">Recent activity<span class="mark green" data-icon="clock" data-size="17"></span></div>
+          <strong>12 changes today</strong><span class="muted" style="font-size:13px">Last change a moment ago</span></article>
+      </div>
+
+      <div class="quick">
+        <button data-open="folderModal"><span class="fi folder" data-icon="plus" data-size="18"></span>
+          <span><b>New folder</b><span>Group files somewhere new.</span></span></button>
+        <button data-open="uploadModal"><span class="fi video" data-icon="upload" data-size="18"></span>
+          <span><b>Upload files</b><span>Drag them in or browse your device.</span></span></button>
+        <button data-pending="Creating files"><span class="fi doc" data-icon="edit" data-size="18"></span>
+          <span><b>New file</b><span>Start a blank text file.</span></span></button>
+      </div>
+
+      <div class="page-head"><div><h1 style="font-size:19px">Recent files</h1></div>
+        <button class="btn btn-sm" data-section="recent">See all</button></div>
+      <div class="skeleton"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div id="recentBody"></div>
+    </section>
+
+    <!-- My files -->
+    <section class="view" id="view-files">
+      <div class="breadcrumb"><span data-icon="home" data-size="15"></span><a href="#" data-section="files">Home</a>/<b>My files</b></div>
+      <div class="page-head"><div><h1>My files</h1><p>Everything you keep in ImiraZSite.</p></div></div>
+      <div class="toolbar">
+        <button class="btn btn-sm" data-open="folderModal"><span data-icon="plus" data-size="16"></span>New folder</button>
+        <button class="btn btn-sm btn-primary" data-open="uploadModal"><span data-icon="upload" data-size="16"></span>Upload</button>
+        <div class="seg" data-view-toggle>
+          <button data-mode="grid" aria-pressed="true">Grid</button>
+          <button data-mode="list" aria-pressed="false">List</button>
+        </div>
+        <label class="sr-only" for="sort">Sort files</label>
+        <select class="input" id="sort" style="min-height:40px;width:auto;padding:0 14px">
+          <option value="name">Name</option><option value="size">Size</option><option value="modified">Modified</option>
+        </select>
+        <button class="btn btn-sm" data-pending="Filters">Filter</button>
+      </div>
+      <div id="filesBody"></div>
+    </section>
+
+    <!-- Recent -->
+    <section class="view" id="view-recent">
+      <div class="page-head"><div><h1>Recent</h1><p>What you touched most recently.</p></div></div>
+      <div id="recentPage"></div>
+    </section>
+
+    <!-- Starred -->
+    <section class="view" id="view-starred">
+      <div class="page-head"><div><h1>Starred</h1><p>The files you want within reach.</p></div></div>
+      <div id="starredPage"></div>
+    </section>
+
+    <!-- Trash -->
+    <section class="view" id="view-trash">
+      <div class="page-head"><div><h1>Trash</h1><p>Deleted files are kept here temporarily.</p></div>
+        <button class="btn btn-sm btn-danger" id="emptyTrashBtn"><span data-icon="trash" data-size="16"></span>Empty trash</button></div>
+      <div id="trashPage"></div>
+    </section>
+
+    <!-- Storage -->
+    <section class="view" id="view-storage">
+      <div class="page-head"><div><h1>Storage</h1><p>Where your space is going.</p></div></div>
+      <div class="storage-grid">
+        <div class="glass donut">
+          <div class="ring" id="donut" style="--p:72%"><div>
+            <strong data-storage-pct>72%</strong><span class="muted" style="font-size:13px">used</span></div></div>
+          <div><b>72 GB used</b><p class="muted" style="font-size:13.5px" data-free>28 GB available</p></div>
+          <button class="btn btn-sm" data-pending="Upgrading storage">Get more space</button>
+        </div>
+        <div class="glass breakdown" id="breakdown"></div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="view" id="view-settings">
+      <div class="page-head"><div><h1>Settings</h1><p>Make ImiraZSite work the way you do.</p></div></div>
+      <div class="glass panel"><h3>Appearance</h3>
+        <div class="set-row"><div><b>Theme</b><p>Dark is the default. System follows your device.</p></div>
+          <div class="seg"><button data-theme-set="dark" aria-pressed="true">Dark</button>
+            <button data-theme-set="light" aria-pressed="false">Light</button>
+            <button data-theme-set="system" aria-pressed="false">System</button></div></div>
+      </div>
+      <div class="glass panel"><h3>Notifications</h3>
+        <div class="set-row"><div><b>Upload finished</b><p>Tell me when a transfer completes.</p></div>
+          <button class="switch" role="switch" aria-checked="true" aria-label="Upload finished notifications"><i></i></button></div>
+        <div class="set-row"><div><b>Storage warnings</b><p>Warn me when space runs low.</p></div>
+          <button class="switch" role="switch" aria-checked="true" aria-label="Storage warnings"><i></i></button></div>
+      </div>
+      <div class="glass panel"><h3>Security</h3>
+        <div class="set-row"><div><b>Two-step sign-in</b><p>Ask for a second code on new devices.</p></div>
+          <button class="switch" role="switch" aria-checked="false" aria-label="Two-step sign-in"><i></i></button></div>
+        <div class="set-row"><div><b>Active sessions</b><p>Sign out of devices you no longer use.</p></div>
+          <button class="btn btn-sm" data-pending="Session management">Review</button></div>
+      </div>
+      <div class="glass panel"><h3>Storage &amp; preferences</h3>
+        <div class="set-row"><div><b>Default view</b><p>Open My files as a grid or a list.</p></div>
+          <div class="seg" data-view-toggle><button data-mode="grid" aria-pressed="true">Grid</button>
+            <button data-mode="list" aria-pressed="false">List</button></div></div>
+        <div class="set-row"><div><b>Trash retention</b><p>Deleted files are removed after 30 days.</p></div>
+          <button class="btn btn-sm" data-pending="Retention settings">Change</button></div>
+      </div>
+    </section>
+
+    <!-- Account -->
+    <section class="view" id="view-account">
+      <div class="page-head"><div><h1>Account</h1><p>Your profile and sign-in details.</p></div></div>
+      <div class="glass panel" style="grid-template-columns:auto 1fr;display:grid;align-items:center">
+        <span class="avatar lg">EZ</span>
+        <div><h3 style="font-size:19px">Ezio</h3><p class="muted">@ezioXyzz · Owner of this drive</p></div>
+      </div>
+      <div class="glass panel"><h3>Account information</h3>
+        <dl class="kv"><dt>Username</dt><dd>ezioXyzz</dd><dt>Member since</dt><dd>September 2026</dd>
+          <dt>Plan</dt><dd>Personal — 100 GB</dd></dl></div>
+      <div class="glass panel"><h3>Storage</h3>
+        <div class="bar"><i data-storage-bar style="width:72%"></i></div>
+        <p class="muted" style="font-size:13.5px"><span data-storage-used>72 GB / 100 GB</span> · <span data-free>28 GB available</span></p></div>
+      <div class="glass panel"><h3>Security</h3>
+        <div class="set-row"><div><b>Password</b><p>Changing it needs the backend, which isn't connected yet.</p></div>
+          <button class="btn btn-sm" data-pending="Changing your password">Change password</button></div>
+        <div class="set-row"><div><b>Session</b><p>Sign out of ImiraZSite on this device.</p></div>
+          <button class="btn btn-sm btn-danger" data-logout>Sign out</button></div>
+      </div>
+    </section>
+  </main>
+</div>
+</div>
+
+<!-- context menu -->
+<div class="menu" id="ctxMenu" role="menu"></div>
+
+<!-- modals -->
+<div class="overlay" id="folderModal" role="dialog" aria-modal="true" aria-labelledby="folderTitle">
+  <div class="modal"><header><h2 id="folderTitle">Create new folder</h2>
+    <button class="icon-btn" data-close aria-label="Close" data-icon="close" data-size="17"></button></header>
+    <form id="folderForm" novalidate><div class="field"><label for="folderInput">Folder name</label>
+      <input class="input" id="folderInput" placeholder="Untitled folder" style="padding-right:14px"></div>
+      <p class="field-error" id="folderError" role="alert"></p>
+      <footer><button type="button" class="btn" data-close>Cancel</button>
+        <button type="submit" class="btn btn-primary">Create folder</button></footer></form>
+  </div></div>
+
+<div class="overlay" id="renameModal" role="dialog" aria-modal="true" aria-labelledby="renameTitle">
+  <div class="modal"><header><h2 id="renameTitle">Rename</h2>
+    <button class="icon-btn" data-close aria-label="Close" data-icon="close" data-size="17"></button></header>
+    <form id="renameForm"><div class="field"><label for="renameInput">New name</label>
+      <input class="input" id="renameInput" style="padding-right:14px"></div>
+      <footer><button type="button" class="btn" data-close>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save name</button></footer></form>
+  </div></div>
+
+<div class="overlay" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="modal"><header><h2 id="confirmTitle">Are you sure?</h2>
+    <button class="icon-btn" data-close aria-label="Close" data-icon="close" data-size="17"></button></header>
+    <p class="muted" id="confirmText"></p>
+    <footer><button class="btn" data-close>Keep it</button>
+      <button class="btn btn-danger" id="confirmDelete">Delete</button></footer></div></div>
+
+<div class="overlay" id="uploadModal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+  <div class="modal"><header><h2 id="uploadTitle">Upload files</h2>
+    <button class="icon-btn" data-close aria-label="Close" data-icon="close" data-size="17"></button></header>
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Drop files here or browse">
+      <span class="fi video lg" data-icon="upload" data-size="24"></span>
+      <b>Drop files here</b><p class="muted" style="font-size:13.5px">or browse your device — up to 2 GB per file.</p>
+    </div>
+    <input type="file" id="filePicker" multiple class="sr-only">
+    <div class="queue" id="uploadQueue"></div>
+    <footer><button class="btn" data-close>Close</button></footer></div></div>
+
+<div class="overlay" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+  <div class="modal wide"><header>
+    <div><h2 id="previewTitle">File</h2><p class="muted" id="previewMeta" style="font-size:13px"></p></div>
+    <button class="icon-btn" data-close aria-label="Close" data-icon="close" data-size="17"></button></header>
+    <div class="preview-stage" id="previewStage"></div>
+    <footer><button class="btn" data-close>Close</button>
+      <button class="btn btn-primary" id="previewDownload">Download</button></footer></div></div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>

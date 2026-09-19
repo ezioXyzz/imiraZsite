@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in · ImiraZSite</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main class="auth">
+  <section class="glass auth-card">
+    <a class="brand" href="index.html"><span class="mark" data-icon="spark" data-size="17"></span><b>Imira<span>Z</span>Site</b></a>
+    <h1>Welcome back</h1>
+    <p class="muted">Sign in to reach your files.</p>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="username">Username</label>
+        <input class="input" id="username" name="username" autocomplete="username" placeholder="Your username" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+        <button type="button" class="icon-btn reveal" id="togglePw" aria-label="Show password" data-icon="eye" data-size="17"></button>
+      </div>
+      <p class="field-error" id="loginError" role="alert"></p>
+      <div class="auth-row">
+        <label class="check"><input type="checkbox" id="remember"> Remember me</label>
+        <a class="muted" href="#" style="font-size:13.5px" data-forgot>Forgot password?</a>
+      </div>
+      <button class="btn btn-primary" type="submit" style="width:100%">Sign in</button>
+    </form>
+
+    <p class="auth-note"><span data-icon="shield" data-size="15"></span>
+      Your password is never stored in the browser. This build has no server behind it yet, so sign-in won't let you through.</p>
+  </section>
+</main>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
